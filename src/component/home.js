@@ -1,10 +1,11 @@
 import Title from "./title";
 import Content from "./content";
 import Button from "./button";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Menubox from './menubox';
+import MenuPhoto from "./menuPhoto";
 
-function Home({data,menudata,page,nav,fnc,fnc1, fnc2}){
+function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc2}){
 
     const gpopup = useRef();
     const blur = useRef();
@@ -36,6 +37,13 @@ function Home({data,menudata,page,nav,fnc,fnc1, fnc2}){
             nav.current.style.animation = "anim .5s linear forwards";
         }, 500);
     }
+
+    useEffect(() => {
+        if(addClicked) {
+         setAddClicked(false)
+         gpopups();
+        }
+    }, [addClicked])
 
       const linkfnc1 = () => {
         window.open('https://foodmandu.com/Restaurant/Details/845', '_blank', 'noreferrer');
@@ -82,6 +90,7 @@ function Home({data,menudata,page,nav,fnc,fnc1, fnc2}){
                             <div className='notelink' onClick={fnc1}>Boudha</div>
                             <div className='notelink' onClick={fnc2}>Thadhodhunga</div>
                         </div>
+                        <MenuPhoto />
                         <div className='omenuboxstitle'>Fresh Vietnamese Summer Rolls</div>
                         <div className='omenuboxscontent'>Consist of fresh veges, herbs & rice noodles wrapped in rice papers (served w/ homemade hoisin sauce).</div>
                         <div className='omenuboximgs'>

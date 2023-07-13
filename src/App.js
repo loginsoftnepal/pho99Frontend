@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { useRef,useEffect } from 'react';
 
@@ -6,7 +6,7 @@ import logo from './img/logo.png';
 import Button from './component/button';
 import { useMediaQuery } from 'react-responsive';
 
-import PhoAdd from './img/phoAdd.jpg';
+import PhoAdd from './img/phopopupnew.jpg';
 import Home from './component/home';
 import About from './component/about';
 import Gallery from './component/gallery';
@@ -1112,7 +1112,7 @@ function App() {
       content:"We are located right at Thadodhunga chowk in Jhamsikhel, Lalitpur between the Sterling Apartments and Bajra &amp; Shangri-La Residency. The ambiance is cozy, with indoor as well as outdoor seating in a court yard garden under open sky surrounded by a variety of flowers and plants. There is even an upper level open deck. Our indoor seating is non-smoking and the arrangement of tables and chairs creates an elegant vibe where you can enjoy our drinks, food, and friendly service.  Parking is available right across from our restaurant in Southern side."
     },
     {
-      img: [l2],
+      img: [g8, g9, g10, g11, g12, g13],
       title:"Lazimpat",
       phone:"9803203119",
       contact: 'For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com',
@@ -1537,10 +1537,12 @@ function App() {
      
     }, [])
 
+ const [addClicked, setAddClicked] = useState(false);
+
   return (
     <>
       <div ref={addPopUpRef} className='addPopUpContainer' onClick={() => addPopUpClick()}>
-        <div className='addPopUp'>
+        <div className='addPopUp' onClick={() => setAddClicked(true)}>
           <img src={PhoAdd} alt="" className='addPopUpImage' />
         </div>
        </div>
@@ -1568,7 +1570,7 @@ function App() {
           <i onClick={sidenavs} className="fa-solid fa-bars"></i>
         </div>
         <section ref={home} className="homemain">
-          <Home data={data[0]} page={menu} nav={navbar} menudata={moremenudata} fnc1={linkfnc1} fnc2={linkfnc2} fnc={mmenus} />
+          <Home data={data[0]} addClicked={addClicked} setAddClicked={setAddClicked} page={menu} nav={navbar} menudata={moremenudata} fnc1={linkfnc1} fnc2={linkfnc2} fnc={mmenus} />
         </section>
         <section ref={about} className="aboutmain">
           <About data={data[1]} page={about} nav={navbar} datas={aboutdata} />
