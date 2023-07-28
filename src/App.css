@@ -517,7 +517,7 @@ section img{
 .omenuboxstitle{
 	width: 100%;
 	padding-left: 10px;
-	font-size: 16px;
+	font-size: 24px;
 	font-weight: bold;
 	color: #222;
 	margin-top: 20px;
@@ -525,7 +525,7 @@ section img{
 .omenuboxscontent{
 	width: 100%;
 	padding-left: 10px;
-	font-size: 12px;
+	font-size: 15px;
 	color: #555;
 	margin-bottom: 20px;
 }
@@ -831,15 +831,34 @@ section img{
 	background-position: right bottom;
 	transition: all .3s ease-out;
 }
+
 .newsbox:hover button{
 	background-position: left bottom;
 	color: white;
 	border-color: white;
 }
+
+.newsbox a {
+	color: black;
+}
 .nb button:hover{
 	border-color: var(--main-color);
 }
 
+.newsbox:hover button a {
+	color: white;
+}
+
+.grid-add {
+	padding: 7px 10px;
+	border-radius: 50%;
+	/* box-shadow: 0 0 5px rgba(0,0,0,0.3); */
+	/* border: 2px solid transparent; */
+}
+
+.grid-add:hover {
+	/* border: 2px solid var(--main-color); */
+}
 /* events */
 .events{
 	width: calc(100% - 300px);
@@ -1160,6 +1179,35 @@ section img{
 	font-size: 30px;
 	font-weight: 700;
 	color: var(--main-color);
+}
+
+
+.gpopup .gpopupnewstitle{
+	position: absolute;
+	width: 80%;
+	top: 30px !important;
+	left: 50px;
+	z-index: 100;
+	font-size: 24px;
+	font-weight: 700;
+	padding-right: 100px;
+	color: var(--main-color);
+	overflow: hidden;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+}
+
+.gpopup .newsclose {
+    position: absolute;
+	top: 30px;
+	right: 30px;
+	z-index: 100;
+	background-position: left bottom;
+	color: gray;
+	font-size: 30px;
+	transition: all .5s ease;
+	/* overflow-y: auto; */
 }
 .gpopup .close{
 	position: absolute;
@@ -1662,6 +1710,13 @@ section img{
 	background-size: 200% 100%;
 	background-position: right bottom;
 	transition: all .3s ease-out;
+}
+.notelink a {
+	text-decoration: none;
+	color: var(--main-color);
+}
+.notelink:hover a {
+	color: white;
 }
 .notelink:hover{
 	color: white;

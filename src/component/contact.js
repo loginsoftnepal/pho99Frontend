@@ -1,8 +1,9 @@
 import { useRef,useState } from "react";
 
 import Title from "./title";
+import { server } from "../fetch";
 
-function Contact({data,page,nav}){
+function Contact({data, page,nav, datas}){
 
     const mainpagel = useRef();
     const mainpager = useRef();
@@ -20,7 +21,7 @@ function Contact({data,page,nav}){
         e.preventDefault();
         const allInputvalue = { uname: formValue.uname, email: formValue.email, message: formValue.message};
         
-        let res = await fetch("https://pho99backend.logindesigns.com/contact",{
+        let res = await fetch(`${server}/contact-message/email`,{
             method: "POST",
             headers: {'content-type':'application/json'},
             body:JSON.stringify(allInputvalue),
@@ -35,22 +36,28 @@ function Contact({data,page,nav}){
             message.current.style.left = "-290px";
         }, 2000);
     };
-
     return(
         <div className="contact">
             <div ref={mainpagel} className="contactleft">
                 <div style={{width:"100%"}}>
                 <Title txt={data.title} />
+                
                 <div className="cl">
 					<div className="cls">
 					    <div className="fhead">E-MAIL:</div>
-					    <div className="ftitle">{data.email}</div>
+                        {datas.map((dat, i) => {
+
+					    return <div key={i} className="ftitle">{dat.email}</div>
+                        })}
 					</div>
 					<div className="cls">
 					    <div className="fhead">Telephone:</div>
-					    <div className="ftitle">{data.phone}</div>
+                        {datas.map((dat, i) => {
+					     return <div key={i} className="ftitle">{dat.phone}</div>
+                        })}
 					</div>
 				</div>
+               
                 <div className="ficon">
                     <a href="https://www.facebook.com/pho99therestaurant"><i className="fa-brands fa-facebook"></i></a>
 					<i className="fa-brands fa-instagram"></i>

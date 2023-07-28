@@ -67,28 +67,28 @@ function Gallery({data,page,nav,datas}){
                     <div className='grimg'>
                         <div className='grid1'>
                             <div className='image' onClick={() => {setImage(0); gpopups(); }}>
-                                <img src={datas[0].img} />
+                                <img src={datas[0] && datas[0].img} alt=''/>
                             </div>
                             <div className='image' onClick={() => {setImage(1); gpopups(); }}>
-                                <img src={datas[1].img} />
+                                <img src={datas[1] && datas[1].img} alt='' />
                             </div>
                         </div>
                         <div className='grid3'>
                             <div className='image' onClick={() => {setImage(2); gpopups(); }}>
-                                <img src={datas[2].img} />
+                                <img src={datas[2] && datas[2].img} alt='' />
                             </div>
                             <div className='image' onClick={() => {setImage(3); gpopups(); }}>
-                                <img src={datas[3].img} />
+                                <img src={datas[3] && datas[3].img} alt='' />
                             </div><div className='image' onClick={() => {setImage(4); gpopups(); }}>
-                                <img src={datas[4].img} />
+                                <img src={datas[4] && datas[4].img} alt='' />
                             </div>
                         </div>
                         <div className='grid2'>
                             <div className='image' onClick={() => {setImage(5); gpopups(); }}>
-                                <img src={datas[5].img} />
+                                <img src={datas[5] && datas[5].img} alt='' />
                             </div>
                             <div className='image' onClick={() => {setImage(6); gpopups(); }}>
-                                <img src={datas[6].img} />
+                                <img src={datas[6] && datas[6].img} alt='' />
                             </div>
                         </div>
                     </div>
@@ -115,13 +115,13 @@ function Gallery({data,page,nav,datas}){
                         >
                         {datas.map((item, i) => (
                             <SwiperSlide key={i}>
-                                <img src={item.img} />
+                                <img src={item.img} alt='' />
                             </SwiperSlide>
                         ))}
                         </Swiper>
                         <div className='popupgridimg'>
                             {datas.map((item, i) => (
-                                <img src={item.img} key={i} />
+                                <img src={item.img} alt='' key={i} />
                             ))}
                         </div>
                     </div>

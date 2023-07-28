@@ -100,7 +100,7 @@ function Location({data,page,nav,datas}){
                     </div>
                 </div>
                 <div ref={gpopup} className='gpopup'>
-                    <div className='gpopuptitle'>{location.title}</div>
+                    <div className='gpopuptitle'>{location && location.title}</div>
                     <div className='close gpopupbody' onClick={closepopup}><i class="fa-solid fa-xmark"></i></div>
                     <Swiper
                         slidesPerView={1}
@@ -120,14 +120,14 @@ function Location({data,page,nav,datas}){
                             marginTop: "125px",
                         }}
                     >
-                        {location.img.map((item, i) => (
+                        {location && location.img.map((item, i) => (
                             <SwiperSlide key={i}>
                                 <img src={item} />
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div className="gpopuptxt">{location.content}</div>
-                    <div className="gpopupcontact">{location.contact}</div>
+                    <div className="gpopuptxt">{location && location.content}</div>
+                    <div className="gpopupcontact">{location && location.contact}</div>
                 </div>
                 <div ref={blur} className='blur'></div>
             </div>

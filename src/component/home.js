@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import Menubox from './menubox';
 import MenuPhoto from "./menuPhoto";
 
-function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc2}){
+function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc2, category, location}){
 
     const gpopup = useRef();
     const blur = useRef();
@@ -82,16 +82,17 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                             <div className='pde'>Eat In</div>
                         </div>
                         <div className='direct'>Please, directly call us at : </div>
-                        <div className='directt'>Boudha : <span>9825996858</span></div>
-                        <div className='directt'>Lazimpat : <span>9825996858</span></div>
-                        <div className='directt'>Jhamshikhel : <span>9825996858</span></div>
-                        <div className='note'>Note : For foodmandu delivery please click on the following links.</div>
+                            {location && location.map((loc) => {
+                            return <div className='directt'>{`${loc.title}: ${loc.phone}`}</div>
+                         })}
+                         <div className='note'>Note : For foodmandu delivery please click on the following links.</div>
                         <div className='notelinks'>
-                            <div className='notelink' onClick={fnc1}>Boudha</div>
-                            <div className='notelink' onClick={fnc2}>Thadhodhunga</div>
-                        </div>
-                        <MenuPhoto />
-                        <div className='omenuboxstitle'>Fresh Vietnamese Summer Rolls</div>
+                             {location && location.map((loc) => {
+                                return <div className='notelink'><a href={`${ loc.link ? loc.link : 'https://foodmandu.com/Restaurant/Details/845'}`} target='_blank' rel='noreferrer'>{loc.title}</a></div>
+                            })}
+                      </div>
+                        <MenuPhoto category={category} />
+                        {/* <div className='omenuboxstitle'>Fresh Vietnamese Summer Rolls</div>
                         <div className='omenuboxscontent'>Consist of fresh veges, herbs & rice noodles wrapped in rice papers (served w/ homemade hoisin sauce).</div>
                         <div className='omenuboximgs'>
                             <img src={menudata[2].img} alt='' />
@@ -110,10 +111,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Salads</div>
                         <div className='omenuboxscontent'>All salads are cleaned with safe, drinkable water.</div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[13].img} alt='' />
-                            <img src={menudata[16].img} alt='' />
-                        </div> */}
+                       
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -144,10 +142,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Specials Vietnamese Summer Dishes</div>
                         <div className='omenuboxscontent'>Rice noodles blended in fresh salads, crushed peanuts, spring rolls w/ your choice of BBQ meat, seafood or deep fried tofu served w/ homemade sweet & sour pickle.</div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[28].img} alt='' />
-                            <img src={menudata[29].img} alt='' />
-                        </div> */}
+                    
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -263,10 +258,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Vietnamese Curries</div>
                         <div className='omenuboxscontent'>Prepared in coconut milk and served with steamed rice/ noodle.</div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[63].img} alt='' />
-                            <img src={menudata[64].img} alt='' />
-                        </div> */}
+                    
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -297,10 +289,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Stir Fried Dishes Served w/ Steamed Rice</div>
                         <div className='omenuboxscontent'></div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[75].img} alt='' />
-                            <img src={menudata[77].img} alt='' />
-                        </div> */}
+                      
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -331,10 +320,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Fried Rice Dishes</div>
                         <div className='omenuboxscontent'></div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[87].img} alt='' />
-                            <img src={menudata[89].img} alt='' />
-                        </div> */}
+                    
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -365,10 +351,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Sweet and Sour w/ Steamed Rice</div>
                         <div className='omenuboxscontent'>Prepared with homemade sweet & sour sauce with vegetables servedw/ steamed rice</div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[98].img} alt='' />
-                            <img src={menudata[99].img} alt='' />
-                        </div> */}
+                     
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -382,10 +365,7 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                         ))}
                         <div className='omenuboxstitle'>Sweet and Sour Soups served w/ Steamed Rice</div>
                         <div className='omenuboxscontent'>Prepared with sweet & sour soup, served steamed white rice</div>
-                        {/* <div className='omenuboximgs'>
-                            <img src={menudata[101].img} alt='' />
-                            <img src={menudata[102].img} alt='' />
-                        </div> */}
+                        
                         {menudata.map((ite, i) => (
                             <>
                             {
@@ -430,8 +410,8 @@ function Home({addClicked, setAddClicked, data, menudata, page,nav,fnc,fnc1, fnc
                                 ) 
                             }
                             </>
-                        ))}
-                        </div>
+                        ))} */}
+                        </div> 
                     </div>
                 </div>
                 <div ref={blur} className='blur'></div>

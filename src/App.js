@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 import { useRef,useEffect } from 'react';
+import ReactGA from "react-ga4";
 
 import logo from './img/logo.png';
 import Button from './component/button';
 import { useMediaQuery } from 'react-responsive';
 
-import PhoAdd from './img/phopopupnew.jpg';
+import PhoAdd from './img/phoOclock.jpg';
 import Home from './component/home';
 import About from './component/about';
 import Gallery from './component/gallery';
@@ -172,6 +173,8 @@ import n3 from './img/n3.jpg';
 import e1 from './img/e1.jpg';
 import e2 from './img/e2.jpg';
 import e3 from './img/e3.jpg';
+import { axiosInstance } from './http/axios';
+import { server } from './fetch';
 
 function App() {
 
@@ -230,47 +233,47 @@ function App() {
     }
   ];
 
-  const gallerydata = [
-    {
-      img: g1,
-    },
-    {
-      img: g2,
-    },
-    {
-      img: g3,
-    },
-    {
-      img: g4,
-    },
-    {
-      img: g5,
-    },
-    {
-      img: g6,
-    },
-    {
-      img: g7,
-    },
-    {
-      img: g8,
-    },
-    {
-      img: g9,
-    },
-    {
-      img: g10,
-    },
-    {
-      img: g11,
-    },
-    {
-      img: g12,
-    },
-    {
-      img: g13,
-    }
-  ];
+  // const gallerydata = [
+  //   {
+  //     img: g1,
+  //   },
+  //   {
+  //     img: g2,
+  //   },
+  //   {
+  //     img: g3,
+  //   },
+  //   {
+  //     img: g4,
+  //   },
+  //   {
+  //     img: g5,
+  //   },
+  //   {
+  //     img: g6,
+  //   },
+  //   {
+  //     img: g7,
+  //   },
+  //   {
+  //     img: g8,
+  //   },
+  //   {
+  //     img: g9,
+  //   },
+  //   {
+  //     img: g10,
+  //   },
+  //   {
+  //     img: g11,
+  //   },
+  //   {
+  //     img: g12,
+  //   },
+  //   {
+  //     img: g13,
+  //   }
+  // ];
 
   const moremenudata = [
     {
@@ -1025,38 +1028,38 @@ function App() {
     }
   ]
 
-  const newsdata = [
-    {
-      img: n1,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-    {
-      img: n2,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-    {
-      img: n3,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-    {
-      img: n1,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-    {
-      img: n2,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-    {
-      img: n3,
-      title:"Kathmandu's Top 10",
-      content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
-    },
-  ];
+  // const newsdata = [
+  //   {
+  //     img: n1,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  //   {
+  //     img: n2,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  //   {
+  //     img: n3,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  //   {
+  //     img: n1,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  //   {
+  //     img: n2,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  //   {
+  //     img: n3,
+  //     title:"Kathmandu's Top 10",
+  //     content:"We are proud to announce that our Vietnamese restaurant has been recognized as one of the top 10 restaurants in Kathmandu by a leading food publication, highlighting our commitment to authentic flavors and exceptional dining experiences.",
+  //   },
+  // ];
 
   const eventsdata = [
     {
@@ -1103,40 +1106,40 @@ function App() {
     },
   ];
 
-  const locationsdata = [
-    {
-      img: [g5,g1,g2,g3,g4,l1,g6,g7],
-      title:"Jhamshikhel",
-      phone: '9803203119',
-      contact:"For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com",
-      content:"We are located right at Thadodhunga chowk in Jhamsikhel, Lalitpur between the Sterling Apartments and Bajra &amp; Shangri-La Residency. The ambiance is cozy, with indoor as well as outdoor seating in a court yard garden under open sky surrounded by a variety of flowers and plants. There is even an upper level open deck. Our indoor seating is non-smoking and the arrangement of tables and chairs creates an elegant vibe where you can enjoy our drinks, food, and friendly service.  Parking is available right across from our restaurant in Southern side."
-    },
-    {
-      img: [g8, g9, g10, g11, g12, g13],
-      title:"Lazimpat",
-      phone:"9803203119",
-      contact: 'For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com',
-      content:"Our newly renovated location in Lazimpat is centrally situated in a popular area of Kathmandu. It is right across from Hotel Shangri-La - a two and a half story white building with ample parking. The redesigned interior is both vibrant and comfortable, with settings that accommodate families, friends and business gatherings.  Indoor seating is no-smoking while the balcony seating is designated for smoking. There is limited outdoor seating, where you can enjoy the flowers and plants on our terrace and a view of Hotel Shangri-La. We also have a private dining room for up to 10 people.",
-    },
-    {
-      img: [l3],
-      title:"Boudha",
-      phone:"9803203119",
-      contact: "For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com",
-      content: "We are located right at Boudhanath Stupa, a World Heritage site. As you enter from the main gate of Boudhanath, you will find us on your left after passing six shops. We have three and half story indoor seating, while the fourth and fifth story are open terraces, affording magnificent views of the stupa.  Except terraces, our indoor seating is no-smoking. Indoor seating is very comfortable with pleasant decor. It is a great place for groups as well as solo diners.",
-    },
-  ];
+  // const locationsdata = [
+  //   {
+  //     img: [g5,g1,g2,g3,g4,l1,g6,g7],
+  //     title:"Jhamshikhel",
+  //     phone: '9803203119',
+  //     contact:"For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com",
+  //     content:"We are located right at Thadodhunga chowk in Jhamsikhel, Lalitpur between the Sterling Apartments and Bajra &amp; Shangri-La Residency. The ambiance is cozy, with indoor as well as outdoor seating in a court yard garden under open sky surrounded by a variety of flowers and plants. There is even an upper level open deck. Our indoor seating is non-smoking and the arrangement of tables and chairs creates an elegant vibe where you can enjoy our drinks, food, and friendly service.  Parking is available right across from our restaurant in Southern side."
+  //   },
+  //   {
+  //     img: [g8, g9, g10, g11, g12, g13],
+  //     title:"Lazimpat",
+  //     phone:"9803203119",
+  //     contact: 'For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com',
+  //     content:"Our newly renovated location in Lazimpat is centrally situated in a popular area of Kathmandu. It is right across from Hotel Shangri-La - a two and a half story white building with ample parking. The redesigned interior is both vibrant and comfortable, with settings that accommodate families, friends and business gatherings.  Indoor seating is no-smoking while the balcony seating is designated for smoking. There is limited outdoor seating, where you can enjoy the flowers and plants on our terrace and a view of Hotel Shangri-La. We also have a private dining room for up to 10 people.",
+  //   },
+  //   {
+  //     img: [l3],
+  //     title:"Boudha",
+  //     phone:"9803203119",
+  //     contact: "For any questions and inquiries, please call us at 980-320-3119 or email us at info@pho99nepal.com",
+  //     content: "We are located right at Boudhanath Stupa, a World Heritage site. As you enter from the main gate of Boudhanath, you will find us on your left after passing six shops. We have three and half story indoor seating, while the fourth and fifth story are open terraces, affording magnificent views of the stupa.  Except terraces, our indoor seating is no-smoking. Indoor seating is very comfortable with pleasant decor. It is a great place for groups as well as solo diners.",
+  //   },
+  // ];
 
-  const vacancydata = [ 
-    {
-      title: "Waiter",
-      location: "Boudha",
-      subtitle: "Looking for an experienced person to help us with serving our customer.",
-      salary: "Negotiable",
-      contact: "9803203119",
-      type: "Urgent",
-    }
-  ]
+  // const vacancydata = [ 
+  //   {
+  //     title: "Waiter",
+  //     location: "Boudha",
+  //     subtitle: "Looking for an experienced person to help us with serving our customer.",
+  //     salary: "Negotiable",
+  //     contact: "9803203119",
+  //     type: "Urgent",
+  //   }
+  // ]
 
   const container = useRef();
   const navbar = useRef();
@@ -1528,24 +1531,318 @@ function App() {
     } 
 
     useEffect(() => {
-    
+     ReactGA.initialize("G-E5WJT34TE2");
+    }, [])
+
+    useEffect(() => {
       setTimeout(() => {
-             if(addPopUpRef) {
+             if(addPopUpRef && addPopUpRef.current) {
              addPopUpRef.current.classList.add('addPopUpShow')
              }
       }, 3000)
      
     }, [])
 
+ const [adPopUp, setAdPopUp] = useState(null);
  const [addClicked, setAddClicked] = useState(false);
+ const [contactAddress, setContactAddress] = useState([]);
+ const [newsdata, setNewsdata]= useState([]);
+ const [vacancydata, setVacancydata] = useState([]);
+ const [locationsdata, setLocationsdata] = useState([]);
+ const [category, setCategory] = useState([]);
+ const [gallerydata, setGallerydata] = useState([]);
+ const [homeDetail, setHomeDetail] = useState({
+      title: "Savor Vietnam's best Pho, made with love.",
+      content: "Experience Pho's taste of traditional Vietnam food with every spoonful at our Pho99 restaurant.",
+      button: "See Menu",
+      img: homeimg,
+    });
+ const [storyDetail, setStoryDetail] = useState({
+      title: "Our Story",
+      content: "Our Vietnamese restaurant is rooted in a love for sharing the authentic flavors of our culture through fresh, traditional dishes. Come savor the stories of Vietnam with us.",
+      button: "Learn More",
+      img: aboutimg,
+    });
+ const [menuDetail, setMenuDetail] = useState( {
+      title: "Our Menu",
+      content: "Savor the vibrant and authentic flavors of Vietnam with our carefully curated menu, featuring classic dishes and regional specialties.",
+      button: "See More",
+    });
+ const [locationDetail, setLocationDetail] = useState( {
+      title: "Location",
+      content: "Discover the authentic taste of Vietnam at our restaurant, conveniently located in Kathmandu, where we bring the vibrant flavors of Vietnam to your table.",
+    });
+ const [galleryDetail, setGalleryDetail] = useState(   {
+      title: "Our Gallery",
+      content: "Discover the artistry and care that goes into each plate before you even take your first bite.",
+      button: "See More",
+    });
+ const [vacancyDetail, setVacancyDetail] = useState( {
+      title: "Vacancy",
+      content: "Join our culinary family and experience a rewarding career in the art of flavors",
+      button: "Send CV",
+    });
+ const [newsDetail, setNewsDetail] = useState(    {
+      title: "News",
+      content: "Find out what's new and exciting at our Vietnamese restaurant, from seasonal specials to collaborations and beyond.",
+    });
+ const [menuSectionItems, setMenuSectionItems] = useState(null);
+
+ useEffect(() => {
+    axiosInstance.get('/ad-pop-up')
+    .then((res) => {
+       setAdPopUp(res.data);
+    }).catch((error) => {
+      console.log(error);
+    })
+ }, [])
+ 
+
+ useEffect(() => {
+   axiosInstance.get('/contact-address')
+   .then((res) => {
+     console.log(res.data)
+     setContactAddress(res.data);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+ useEffect(() => {
+   axiosInstance.get('/news/fetch')
+   .then((res) => {
+    console.log(res.data);
+    const formattedData = res.data.map((news) => {
+        return {
+          title: news.heading,
+          content: news.mainContent,
+          img: `${server}/news/${news.fileName}`,
+          author: news.author,
+          publishedDate: news.publishedDate,
+          link: news.link,
+        }
+    } )
+     setNewsdata(formattedData);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+  useEffect(() => {
+   axiosInstance.get('/location')
+   .then((res) => {
+       console.log(res.data);
+       const formatData = res.data.map((loc) => {
+        return {
+          title: loc.locationName,
+          phone: loc.phoneNumber,
+          contact: loc.locationSubHeading,
+          content: loc.mainContent,
+          link: loc.link,
+          img: [...loc.locationGallery.map((gal) => {
+                return `${server}/locationGallery/${gal.fileName}`
+            })]
+        }
+       })
+       setLocationsdata(formatData);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+  useEffect(() => {
+   axiosInstance.get('/vacancy')
+   .then((res) => {
+      console.log(res.data);
+      const formattedData = res.data.map((vac) => {
+        return {
+           title: vac.position,
+           location: vac.location,
+           subtitle: vac.subHeading,
+           contact: vac.contactNo,
+           type: vac.label,
+           salary: vac.salary,
+        }
+      })
+      setVacancydata(formattedData);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+  useEffect(() => {
+   axiosInstance.get('/category')
+   .then((res) => {
+     console.log(res.data);
+     setCategory(res.data);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+
+  useEffect(() => {
+   axiosInstance.get('/gallery/fetch')
+   .then((res) => {
+      const formattedData = res.data.map((gal) => {
+        return {
+          img: `${server}/gallery/${gal.fileName}`,
+        }
+      })
+      setGallerydata(formattedData);
+   }).catch((error) => {
+     console.log(error);
+   })
+ }, [])
+
+  useEffect(() => {
+     axiosInstance.get('/home')
+     .then((res) => {
+        console.log(res.data);
+        if(res.data && res.data.length > 0) {
+          setHomeDetail({
+                title: res.data[0].heading,
+                content: res.data[0].subHeading,
+                button: 'See Menu',
+                img: homeimg,
+              }
+          );
+        }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+     useEffect(() => {
+     axiosInstance.get('/ourstory')
+     .then((res) => {
+       console.log(res.data);
+       if(res.data && res.data.length > 0) {
+        setStoryDetail(
+          {
+            title: res.data[0].heading,
+            content: res.data[0].subHeading,
+            button: 'Learn More',
+            img: `${server}/story/${res.data[0].fileName}`
+          }
+        );
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/menu-detail')
+     .then((res) => {
+      console.log(res.data);
+       if(res.data && res.data.length > 0) {
+        setMenuDetail(
+          {
+            title: res.data[0].heading,
+            content: res.data[0].subHeading,
+            button: 'See More',
+          }
+        );
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/location-detail')
+     .then((res) => {
+       if(res.data && res.data.length) {
+        setLocationDetail({
+           title: res.data[0].heading,
+           content: res.data[0].subHeading
+        });
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/gallery-detail')
+     .then((res) => {
+      if(res.data && res.data.length > 0) {
+        setGalleryDetail({
+           title: res.data[0].heading,
+           content: res.data[0].subHeading,
+           button: 'See More'
+        });
+      }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/vacancy-detail')
+     .then((res) => {
+        if(res.data && res.data.length > 0) {
+        setVacancyDetail({
+           title: res.data[0].heading,
+           content: res.data[0].subHeading,
+           button: 'Send CV'
+        });
+        }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/news-detail')
+     .then((res) => {
+       if(res.data && res.data.length > 0) {
+        setNewsDetail({
+           title: res.data[0].heading,
+           content: res.data[0].subHeading
+        });
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+      useEffect(() => {
+     axiosInstance.get('/menu')
+     .then((res) => {
+       if(res.data && res.data.length > 0) {
+        setMenuSectionItems(res.data.map((data) => {
+           return {
+             name: data.heading,
+             content: data.subHeading,
+             img: `${server}/menuPhoto/${data.fileName}`,
+             price: data.price
+           }
+        }));
+       }
+     })
+     .catch((err) => {
+       console.log(err);
+     })
+   }, [])
+
+    console.log(locationsdata)
 
   return (
     <>
-      <div ref={addPopUpRef} className='addPopUpContainer' onClick={() => addPopUpClick()}>
+      {adPopUp && (<div ref={addPopUpRef} className='addPopUpContainer' onClick={() => addPopUpClick()}>
         <div className='addPopUp' onClick={() => setAddClicked(true)}>
-          <img src={PhoAdd} alt="" className='addPopUpImage' />
+          <img src={adPopUp && `${server}/adPopUp/${adPopUp}`} alt="" className='addPopUpImage' />
         </div>
-       </div>
+       </div>)}
       <div ref={container} className="container">
         <div ref={navbar} className="navbar">
           <img onClick={refreshPage} src={logo} alt="" />
@@ -1563,38 +1860,40 @@ function App() {
           <div className='button'>
             <Button txt={(isBigScreen && isTablet) ? 'Order' : "Order from Foodmandu" } />
             <div className='orderbox'>
-              <div className='ob' onClick={linkfnc1}>Boudha</div>
-              <div className='ob' onClick={linkfnc2}>Thadhodhunga</div>
+              {locationsdata && locationsdata.map((data) => {
+              // <div className='ob' onClick={linkfnc1}>Boudha</div>
+              return <div className='ob'><a style={{ textDecoration: 'none', color: 'black'}} href={`${(data && data.link) ? data.link : 'https://foodmandu.com/Restaurant/Details/845'}`} target='_blank' rel='noreferrer'>{data.title}</a></div>
+              })}
             </div>
           </div>
           <i onClick={sidenavs} className="fa-solid fa-bars"></i>
         </div>
         <section ref={home} className="homemain">
-          <Home data={data[0]} addClicked={addClicked} setAddClicked={setAddClicked} page={menu} nav={navbar} menudata={moremenudata} fnc1={linkfnc1} fnc2={linkfnc2} fnc={mmenus} />
+          <Home data={homeDetail} location={locationsdata} addClicked={addClicked} setAddClicked={setAddClicked} page={menu} nav={navbar} menudata={moremenudata} category={category} fnc1={linkfnc1} fnc2={linkfnc2} fnc={mmenus} />
         </section>
         <section ref={about} className="aboutmain">
-          <About data={data[1]} page={about} nav={navbar} datas={aboutdata} />
+          <About data={storyDetail} page={about} nav={navbar} datas={aboutdata} />
         </section>
         <section ref={gallery} className="gallerymain">
-          <Gallery data={data[2]} page={gallery} nav={navbar} datas={gallerydata} />
+          <Gallery data={galleryDetail} page={gallery} nav={navbar} datas={gallerydata} />
         </section>
         <section ref={menu} className="menumain">
-          <Menu data={data[3]} page={menu} nav={navbar} menudata={moremenudata} fnc1={linkfnc1} fnc2={linkfnc2} />
+          <Menu category={category} location={locationsdata} data={menuDetail} page={menu} nav={navbar} menudata={menuSectionItems} fnc1={linkfnc1} fnc2={linkfnc2} />
         </section>
         <section ref={vacancy} className="vacancymain">
-          <Vacancy data={data[8]} page={vacancy} nav={navbar} datas={vacancydata} />
+          <Vacancy data={vacancyDetail} page={vacancy} nav={navbar} datas={vacancydata} />
         </section>
         <section ref={news} className="newsmain">
-          <News data={data[4]} page={news} nav={navbar} datas={newsdata} />
+          <News data={newsDetail} page={news} nav={navbar} datas={newsdata} />
         </section>
         <section ref={events} className="eventsmain">
           {/* <Event data={data[5]} page={events} nav={navbar} datas={eventsdata} /> */}
         </section>
         <section ref={locations} className="locationsmain">
-          <Location data={data[6]} page={locations} nav={navbar} datas={locationsdata} />
+          <Location data={locationDetail} page={locations} nav={navbar} datas={locationsdata} />
         </section>
         <section ref={contact} className="contactmain">
-          <Contact data={data[7]} page={contact} nav={navbar} />
+          <Contact data={data[7]} page={contact} nav={navbar} datas={contactAddress} />
         </section>
         <div ref={sidenav} className='sidenav'>
             <div className='snbar'></div>

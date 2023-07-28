@@ -10,6 +10,7 @@ import Title from './title';
 import Content from './content';
 import Button from './button';
 import Vacancybox from './vacancybox';
+import { server } from '../fetch';
 
 function Vacancy({data,page,nav,datas}){
 
@@ -42,7 +43,7 @@ function Vacancy({data,page,nav,datas}){
         e.preventDefault();
         const allInputvalue = { fname: formValue.fname, lname: formValue.lname, email: formValue.email, mobile: formValue.mobile, position: formValue.position, attachments: file};
         
-        let res = await fetch("https://pho99backend.logindesigns.com/email",{
+        let res = await fetch(`${server}/vacancy/email`,{
             method: "POST",
             headers: {'content-type':'application/json'},
             body:JSON.stringify(allInputvalue),
@@ -132,7 +133,7 @@ function Vacancy({data,page,nav,datas}){
                     > */}
                         {datas.map((item, i) => (
                             // <SwiperSlide key={i}>
-                                 <Vacancybox content={item} fnc={gpopups} />
+                                 <Vacancybox key={i} content={item} fnc={gpopups} />
                             // </SwiperSlide>
                         ))}
                     {/* </Swiper> */}

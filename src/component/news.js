@@ -9,11 +9,14 @@ import { Pagination, Navigation } from "swiper";
 
 import Title from "./title";
 import Content from "./content";
+import {HiOutlineViewGridAdd} from 'react-icons/hi'
+import { MdOutlineCrib } from 'react-icons/md';
+import { useNavigate } from "react-router-dom";
 
 function News({data,page,nav,datas}){
 
     const [news,setNews] = useState(datas[0]);
-
+    const navigate = useNavigate()
     const gpopup = useRef();
     const blur = useRef();
     const mainpagel = useRef();
@@ -52,7 +55,7 @@ function News({data,page,nav,datas}){
                     </div>
                 </div>
                 <div ref={mainpager} className="newsright">
-                    <div className="newsboxs">
+                    <div style={{ display: 'flex', alignItems:'center'}} className="newsboxs">
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={0}
@@ -89,22 +92,40 @@ function News({data,page,nav,datas}){
                                 <div className="nb">
                                     <div className="nbtitle">{item.title}</div>
                                     <div className="nbdetail">{item.content}</div>
-                                    <button onClick={() => {setNews(item); gpopups(); }}>Read More</button>
+                                    <button onClick={() => {setNews(item); }}><a style={{textDecoration: 'none'}} href={`${item.link && item.link}`} rel="noreferrer" target="_blank">Read More</a></button>
                                 </div>
                             </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    <div onClick={() => gpopups()} className="grid-add">
+                       <HiOutlineViewGridAdd size={30} />
+                    </div>
                     </div>
                 </div>
                 <div ref={gpopup} className='gpopup'>
-                    <div className='gpopuptitle'>{news.title}</div>
-                    <div className='close' onClick={closepopup}><i class="fa-solid fa-xmark"></i></div>
+                    {/* <div className="menupopupcontainer"> */}
+                    <div className='gpopupnewstitle'>All News</div>
+                    
+                    <div className='newsclose' onClick={closepopup}><i class="fa-solid fa-xmark"></i></div>
+                    {/* </div> */}
                     <div className="gpopupnews"> 
-                        <img className="gpopupimg" src={news.img} />
+                     {/* <div style={{fontSize:'24px'}} className="gpopuptxt">{news && news.author}</div>
+                     <div className="gpopuptxt">{news && news.publishedDate}</div>
+                        <img className="gpopupimg" alt="" src={news && news.img} />
                         <div className="gpopuptxt">
-                            &emsp;&emsp;&emsp;{news.content}
-                        </div>
+                            &emsp;&emsp;&emsp;{news && news.content}
+                        </div> */}
+                           {datas.map((item, i) => (
+                            <div className="newsbox">
+                                <img src={item.img} alt="" />
+                                <div className="nb">
+                                    <div className="nbtitle">{item.title}</div>
+                                    <div className="nbdetail">{item.content}</div>
+                                    <button onClick={() => {setNews(item); gpopups();  }}>Read More</button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div ref={blur} className='blur'></div>
