@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-
+import '../App.css'
 import {Swiper,SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -93,7 +93,7 @@ function Vacancy({data,page,nav,datas}){
     return(
             <div className="vacancy">
                 <div ref={mainpagel} className="vacancyleft">
-                    <div>
+                    <div className='content'>
                     <Title txt={data.title} />
                     <Content txt={data.content} />
                     <Button txt={data.button} fnc={gpopups} />
@@ -101,7 +101,7 @@ function Vacancy({data,page,nav,datas}){
                 </div>
                 <div ref={mainpager} className="vacancyright">
                     <div className='vacancyboxs'>
-                        {/* <Swiper
+                        <Swiper
                         slidesPerView={3}
                         spaceBetween={0}
                         loop={true}
@@ -123,20 +123,21 @@ function Vacancy({data,page,nav,datas}){
                                 spaceBetween: 10,
                             },
                           }}
-                        // navigation={true}
+                        navigation={true}
+                        autoplay={true}
                         modules={[Pagination,Navigation]}
                         className='mySwiper'
                         style={{
                             width:"100%",
                             paddingBottom:"60px"
                         }}
-                    > */}
+                    >
                         {datas.map((item, i) => (
-                            // <SwiperSlide key={i}>
+                            <SwiperSlide key={i}>
                                  <Vacancybox key={i} content={item} fnc={gpopups} />
-                            // </SwiperSlide>
+                             </SwiperSlide>
                         ))}
-                    {/* </Swiper> */}
+                    </Swiper>
                             
                             
                     </div>

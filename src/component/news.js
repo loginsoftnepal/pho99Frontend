@@ -10,8 +10,9 @@ import { Pagination, Navigation } from "swiper";
 import Title from "./title";
 import Content from "./content";
 import {HiOutlineViewGridAdd} from 'react-icons/hi'
-import { MdOutlineCrib } from 'react-icons/md';
+import { MdOutlineArrowBackIosNew, MdOutlineCrib } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
+import { MdArrowBackIosNew } from 'react-icons/md';
 
 function News({data,page,nav,datas}){
 
@@ -54,10 +55,10 @@ function News({data,page,nav,datas}){
                     <Content txt={data.content} />
                     </div>
                 </div>
-                <div ref={mainpager} className="newsright">
+                <div ref={mainpager} className="newsright" style={{position: 'relative'}}>
                     <div style={{ display: 'flex', alignItems:'center'}} className="newsboxs">
                     <Swiper
-                        slidesPerView={3}
+                        slidesPerView={2}
                         spaceBetween={0}
                         loop={true}
                         pagination={{
@@ -65,7 +66,7 @@ function News({data,page,nav,datas}){
                         }}
                         breakpoints={{
                             0: {
-                                slidesPerView: 2,
+                                slidesPerView: 1,
                                 spaceBetween: 0,
                             },
                             850: {
@@ -73,7 +74,7 @@ function News({data,page,nav,datas}){
                                 spaceBetween: 10,
                             },
                             1100: {
-                                slidesPerView: 3,
+                                slidesPerView: 2,
                                 spaceBetween: 10,
                             },
                           }}
@@ -98,8 +99,8 @@ function News({data,page,nav,datas}){
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div onClick={() => gpopups()} className="grid-add">
-                       <HiOutlineViewGridAdd size={30} />
+                    <div onClick={() => gpopups()} className="newsboxArrow">
+                        <span className="newsArrowBtn">View More</span>
                     </div>
                     </div>
                 </div>
@@ -117,12 +118,12 @@ function News({data,page,nav,datas}){
                             &emsp;&emsp;&emsp;{news && news.content}
                         </div> */}
                            {datas.map((item, i) => (
-                            <div className="newsbox">
+                            <div className="sidenewsbox">
                                 <img src={item.img} alt="" />
                                 <div className="nb">
-                                    <div className="nbtitle">{item.title}</div>
-                                    <div className="nbdetail">{item.content}</div>
-                                    <button onClick={() => {setNews(item); gpopups();  }}>Read More</button>
+                                    <div  style={{fontSize: '28px'}} className="sntitle">{item.title}</div>
+                                    <div style={{margin: '10px 0'}} className="nbdetail">{item.content}</div>
+                                    <button style={{fontSize: '14px', width: '100px'}} onClick={() => {setNews(item); gpopups();  }}>Read More</button>
                                 </div>
                             </div>
                         ))}
