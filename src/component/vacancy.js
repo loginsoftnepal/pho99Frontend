@@ -111,10 +111,10 @@ function Vacancy({data,page,nav,datas}){
                         }}
                         breakpoints={{
                             0: {
-                                slidesPerView: 2,
+                                slidesPerView: 1,
                                 spaceBetween: 0,
                             },
-                            850: {
+                            768: {
                                 slidesPerView: 2,
                                 spaceBetween: 10,
                             },
@@ -129,7 +129,7 @@ function Vacancy({data,page,nav,datas}){
                         className='mySwiper'
                         style={{
                             width:"100%",
-                            paddingBottom:"60px"
+                            paddingBottom:"60px",
                         }}
                     >
                         {datas.map((item, i) => (
@@ -138,8 +138,7 @@ function Vacancy({data,page,nav,datas}){
                              </SwiperSlide>
                         ))}
                     </Swiper>
-                            
-                            
+                                               
                     </div>
                 </div>
                 <div ref={gpopup} className='gpopup'>
